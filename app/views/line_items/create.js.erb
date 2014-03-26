@@ -1,0 +1,9 @@
+$('#cart').html("<%= j render @cart %>");
+<% if @cart.total_items == 1 %>
+	$('#cart').hide();
+	$('#cart').slideDown(2000);
+<% end %>
+$("#recent_item").css('background-color', '#88ff88');
+setTimeout(function(){
+	$("#recent_item").css('background-color', '#114411');
+},2000);
