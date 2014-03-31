@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
 	validates :image_url, format: {with: /\.(jpg|png|gif)\z/i, message: "should be of the required format"}
 
 	has_many :line_items
+	has_many :orders, through: :line_items
 	before_destroy :ensure_not_referenced_by_any_line_item
 
 	def ensure_not_referenced_by_any_line_item
