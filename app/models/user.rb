@@ -2,11 +2,18 @@ require 'digest/sha2'
 class User < ActiveRecord::Base
 	validates :name, presence: true, uniqueness: true
 	validates :password, confirmation: true
+	after_destroy :ensure_an_admin_remains
 
 	attr_reader :password
 	attr_accessor :password_confirmation
 
 	validate :password_must_be_present
+
+	def ensure_an_admin_remains
+		if User.count.zero
+			raise "Can't delete the last user"
+		end
+	end
 
 	def self.authenticate(name, password)
 		if user = User.find_by(name: name)
