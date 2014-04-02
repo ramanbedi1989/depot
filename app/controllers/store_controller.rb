@@ -7,4 +7,5 @@ class StoreController < ApplicationController
      @products = Product.all
      @cart = current_cart
    end
+  end
  end
