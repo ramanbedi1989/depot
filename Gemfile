@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'rvm1-capistrano3', require: false
 
 group :production do
 	gem 'mysql2'
@@ -38,6 +39,7 @@ group :doc do
 end
 
 gem 'will_paginate'
+gem "net-ssh", "~> 2.7.0"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -46,7 +48,11 @@ gem 'will_paginate'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+group :development  do
+	gem 'capistrano'
+	gem 'capistrano-rails'
+	gem "capistrano-rvm"
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
